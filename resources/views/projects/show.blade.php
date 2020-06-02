@@ -49,12 +49,10 @@
                         @method('PATCH')
                         <textarea
                             name="notes"
-                            class="card w-full mb-4"
+                            class="bg-white p-5 rounded-lg shadow text-default w-full mb-4"
                             style="min-height: 200px"
-                            placeholder="Anything special that you want to make a note of?">
-                            {{ $project->notes }}
-                        </textarea>
-                        @include ('errors')
+                            placeholder="Anything special that you want to make a note of?">{{ $project->notes }}</textarea>
+                            @include('errors')
                         <button type="submit" class="bg-blue text-white text-sm no-underline rounded-lg py-3 px-5">Save</button>
                     </form>
                 </div>
