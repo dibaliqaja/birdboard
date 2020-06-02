@@ -60,14 +60,20 @@
                             class="bg-white p-5 rounded-lg shadow text-default w-full mb-4"
                             style="min-height: 200px"
                             placeholder="Anything special that you want to make a note of?">{{ $project->notes }}</textarea>
-                            @include('errors')
+
                         <button type="submit" class="bg-blue text-white text-sm no-underline rounded-lg py-3 px-5">Save</button>
+
+                        @include('errors')
                     </form>
                 </div>
             </div>
             <div class="lg:w-1/4 px-3 lg:py-8">
                 @include('projects.card')
                 @include('projects.activity.card')
+
+                @can('manage', $project)
+                    @include('projects.invite')
+                @endcan
             </div>
         </div>
     </main>
