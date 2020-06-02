@@ -13,7 +13,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = auth()->user()->projects;
+        $projects = auth()->user()->accessibleProjects();
 
         return view('projects.index', compact('projects'));
     }
@@ -92,7 +92,7 @@ class ProjectsController extends Controller
         $project->delete();
 
         return redirect('/projects');
-    }    
+    }
 
     protected function validateRequest()
     {
