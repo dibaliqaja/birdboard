@@ -39,6 +39,20 @@
   * @import "components/forms";
   */
 
+  .section {
+      @apply px-4;
+  }
+
+  .button {
+      @apply bg-button text-white no-underline rounded-lg text-sm py-2 px-5;
+      box-shadow: 0 2px 7px 0 #b0eaff;
+  }
+
+  .card {
+      @apply bg-card p-5 rounded-lg shadow;
+      color: var('--text-default-color');
+  }
+
  /**
   * This injects all of Tailwind's utility classes, generated based on your
   * config file.
@@ -63,3 +77,19 @@
   * @import "utilities/background-patterns";
   * @import "utilities/skew-transforms";
   */
+
+  .theme-light {
+    --page-background-color: #f5f6f9;
+    --card-background-color: white;
+    --button-background-color: #47cdff;
+    --header-background-color: white;
+    --text-default-color: black;
+  }
+
+  .theme-dark {
+    --page-background-color: #17181e;
+    --card-background-color: #1f2027;
+    --button-background-color: #59b6f9;
+    --header-background-color: #1f2027;
+    --text-default-color: white;
+  }
