@@ -47,6 +47,10 @@ let colors = {
   'transparent': 'transparent',
 
   'default': 'var(--text-default-color)',
+  'accent': 'var(--text-accent-color)',
+  'accent-light': 'var(--text-accent-light-color)',
+  'muted': 'var(--text-muted-color)',
+  'muted-light': 'var(--text-muted-light-color)',
 
   'black': '#22292f',
   'grey-darkest': '#3d4852',
