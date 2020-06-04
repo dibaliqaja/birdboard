@@ -41,9 +41,9 @@
                         <div class="flex items-center ml-auto">
                             <!-- Authentication Links -->
                             @guest
-                                <a class="text-default font-bold no-underline mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="text-default font-bold no-underline mr-3 hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 @if (Route::has('register'))
-                                    <a class="text-default font-bold no-underline" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="text-default font-bold no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             @else
                                 <theme-switcher></theme-switcher>
