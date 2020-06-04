@@ -6,7 +6,7 @@
             <h1 class="text-center text-default no-underline mb-3">
                 Birdboard
             </h1>
-            <a class="text-default no-underline text-md" href="https://github.com/dibaliqaja/birdboard">GitHub</a>
+            <a class="text-default no-underline text-md" href="/projects">Projects</a>
         </div>
     </div>
 @endsection
