@@ -47,15 +47,21 @@
                                 @endif
                             @else
                                 <theme-switcher></theme-switcher>
-                                <a class="font-bold text-default no-underline mr-3">{{ Auth::user()->name }}</a>
-                                    <a class="text-default no-underline"
-                                        href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
+                                <dropdown align="right" width="200px">
+                                    <template v-slot:trigger>
+                                        <button class="flex items-center font-bold text-default no-underline mr-3 focus:outline-none">
+                                            <img src="{{ gravatar_url(auth()->user()->email) }}" alt="profil image" class="rounded-full mr-3" width="35">
+
+                                            {{ Auth::user()->name }}
+                                        </button>
+                                    </template>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                         @csrf
+                                        <button type="submit" class="dropdown-menu-link w-full text-left">Logout</button>
                                     </form>
+                                </dropdown>
                             @endguest
                         </div>
                     </div>
