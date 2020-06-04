@@ -31,7 +31,7 @@
                             class="border border-muted-light mb-2 p-2 text-xs block w-full rounded"
                             placeholder="Task 1"
                             v-for="task in form.tasks"
-                            v-model="task.value">
+                            v-model="task.body">
                     </div>
 
                     <button type="button" class="inline-flex items-center text-xs" @click="addTask">
@@ -63,7 +63,7 @@
                     title: '',
                     description: '',
                     tasks: [
-                        { value: '' }
+                        { body: '' }
                     ]
                 },
                 errors: {}
@@ -72,7 +72,7 @@
 
         methods: {
             addTask() {
-                this.form.tasks.push({ value: '' });
+                this.form.tasks.push({ body: '' });
             },
 
             async submit() {
