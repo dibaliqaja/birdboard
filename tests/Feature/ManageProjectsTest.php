@@ -14,7 +14,7 @@ class ManageProjectsTest extends TestCase
     /** @test */
     public function guests_cannot_manage_projects()
     {
-        $project = factory('App\Project')->create();
+        $project = Project::factory()->create();
 
         $this->get('/projects')->assertRedirect('login');
         $this->get('/projects/create')->assertRedirect('login');
@@ -31,7 +31,7 @@ class ManageProjectsTest extends TestCase
         $this->get('/projects/create')->assertStatus(200);
 
         $this->followingRedirects()
-            ->post('/projects', $attributes = factory(Project::class)->raw())
+            ->post('/projects', $attributes = Project::factory()->raw())
             ->assertSee($attributes['title'])
             ->assertSee($attributes['description'])
             ->assertSee($attributes['notes']);
@@ -42,7 +42,7 @@ class ManageProjectsTest extends TestCase
     {
         $this->signIn();
 
-        $attributes = factory(Project::class)->raw();
+        $attributes = Project::factory()->raw();
 
         $attributes['tasks'] = [
             ['body' => 'Task 1'],
@@ -134,7 +134,7 @@ class ManageProjectsTest extends TestCase
     {
         $this->signIn();
 
-        $project = factory('App\Project')->create();
+        $project = Project::factory()->create();
 
         $this->get($project->path())->assertStatus(403);
     }
@@ -144,7 +144,7 @@ class ManageProjectsTest extends TestCase
     {
         $this->signIn();
 
-        $project = factory('App\Project')->create();
+        $project = Project::factory()->create();
 
         $this->patch($project->path())->assertStatus(403);
     }
@@ -154,7 +154,7 @@ class ManageProjectsTest extends TestCase
     {
         $this->signIn();
 
-        $attributes = factory('App\Project')->raw(['title' => '']);
+        $attributes = Project::factory()->raw(['title' => '']);
 
         $this->post('/projects', $attributes)->assertSessionHasErrors('title');
     }
@@ -164,7 +164,7 @@ class ManageProjectsTest extends TestCase
     {
         $this->signIn();
 
-        $attributes = factory('App\Project')->raw(['description' => '']);
+        $attributes = Project::factory()->raw(['description' => '']);
 
         $this->post('/projects', $attributes)->assertSessionHasErrors('description');
     }

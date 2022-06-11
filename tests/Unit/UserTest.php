@@ -15,7 +15,7 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_has_projects()
     {
-        $user = factory('App\User')->create();
+        $user = User::factory()->create();
 
         $this->assertInstanceOf(Collection::class, $user->projects);
     }
@@ -29,8 +29,8 @@ class UserTest extends TestCase
 
         $this->assertCount(1, $userOne->accessibleProjects());
 
-        $userTwo = factory(User::class)->create();
-        $userThree = factory(User::class)->create();
+        $userTwo = User::factory()->create();
+        $userThree = User::factory()->create();
 
         $project = tap(ProjectFactory::ownedBy($userTwo)->create())->invite($userThree);
 

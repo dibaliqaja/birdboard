@@ -16,7 +16,7 @@ class InvitationsTest extends TestCase
     {
         $project = ProjectFactory::create();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $assertInvitationForbidden = function () use ($user, $project) {
             $this->actingAs($user)
@@ -36,7 +36,7 @@ class InvitationsTest extends TestCase
     {
         $project = ProjectFactory::create();
 
-        $userToInvite = factory(User::class)->create();
+        $userToInvite = User::factory()->create();
 
         $this->actingAs($project->owner)
             ->post($project->path() . '/invitations', [
@@ -64,7 +64,7 @@ class InvitationsTest extends TestCase
     {
         $project = ProjectFactory::create();
 
-        $project->invite($newUser = factory(User::class)->create());
+        $project->invite($newUser = User::factory()->create());
 
         $this->signIn($newUser);
 

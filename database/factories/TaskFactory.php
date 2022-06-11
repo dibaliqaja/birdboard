@@ -1,15 +1,31 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Project;
 use App\Task;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Task::class, function (Faker $faker) {
-    return [
-        'body' => $faker->sentence,
-        'project_id' => factory(Project::class)->create(),
-        'completed' => false
-    ];
-});
+class TaskFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Task::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'body'       => $this->faker->sentence,
+            'project_id' => Project::factory()->create(),
+            'completed'  => false
+        ];
+    }
+}

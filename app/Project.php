@@ -3,10 +3,12 @@
 namespace App;
 
 use DateTimeInterface;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+    use HasFactory;
     use RecordsActivity;
 
     protected $guarded = [];

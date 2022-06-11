@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Project;
+use App\Task;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Facades\Tests\Setup\ProjectFactory;
 use Tests\TestCase;
@@ -14,7 +15,7 @@ class ProjectTasksTest extends TestCase
     /** @test */
     public function guests_cannot_add_tasks_to_projects()
     {
-        $project = factory('App\Project')->create();
+        $project = Project::factory()->create();
 
         $this->post($project->path() . '/tasks')->assertRedirect('login');
     }
@@ -24,7 +25,7 @@ class ProjectTasksTest extends TestCase
     {
         $this->signIn();
 
-        $project = factory('App\Project')->create();
+        $project = Project::factory()->create();
 
         $this->post($project->path() . '/tasks', ['body' => 'Test task'])->assertStatus(403);
 
@@ -91,7 +92,7 @@ class ProjectTasksTest extends TestCase
     public function a_task_can_be_marked_as_incomplete()
     {
         $this->withoutExceptionHandling();
-        
+
         $project = ProjectFactory::withTasks(1)->create();
 
         $this->actingAs($project->owner)
@@ -116,7 +117,7 @@ class ProjectTasksTest extends TestCase
     {
         $project = ProjectFactory::create();
 
-        $attributes = factory('App\Task')->raw(['body' => '']);
+        $attributes = Task::factory()->raw(['body' => '']);
 
         $this->actingAs($project->owner)
             ->post($project->path() . '/tasks', $attributes)
